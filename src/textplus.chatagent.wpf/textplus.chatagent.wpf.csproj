@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+    <Platforms>AnyCPU;x64</Platforms>
+    <ApplicationIcon />
+    <StartupObject>textplus.chatagent.wpf.Program</StartupObject>
+    <ProductVersion>1.0.0.0</ProductVersion>
+    <Version>1.0.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\libcystd\src\libcystd.wpf\libcystd.wpf.csproj" />
+    <ProjectReference Include="..\..\..\libcystd\src\libcystd\libcystd.csproj" />
+    <ProjectReference Include="..\..\..\sqlite-netFx-source-1.0.111.0\System.Data.SQLite\System.Data.SQLite.NetStandard20.csproj" />
+    <ProjectReference Include="..\libtextplus.chatagent\libtextplus.chatagent.csproj" />
+    <ProjectReference Include="..\libtextplus\libtextplus.csproj" />
+  </ItemGroup>
+
+</Project>

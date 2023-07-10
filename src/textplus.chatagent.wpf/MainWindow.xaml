@@ -1,0 +1,110 @@
+﻿<Window x:Class="textplus.chatagent.wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:textplus.chatagent.wpf"
+        mc:Ignorable="d"
+        Title ="text plus chat agent" Height="768" Width="1024" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="28"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" x:Name="TbMain" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+            <TabItem  Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <TabItem.Header>
+                    <TextBlock Text="Monitor">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=TabItem}}" Value="True">
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </TabItem.Header>
+                <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                    <DataGrid x:Name="WorkerMonitor" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" AutoGenerateColumns="False" RowHeaderWidth="28" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Account" Width="100" />
+                            <DataGridTextColumn Header="Status" Width="*">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                        <Setter Property="TextBlock.TextAlignment" Value="Left" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Contacts" Width="88"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Greets" Width="88"></DataGridTextColumn>
+                            <DataGridTextColumn Header="In" Width="88"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Out" Width="88"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="CmdLaunch"  Header="Launch" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="TbItemSettings" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <TabItem.Header>
+                    <TextBlock Text="Settings">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=TabItem}}" Value="True">
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </TabItem.Header>
+                <Grid x:Name="GrdCfgContent" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+            </TabItem>
+            <TabItem x:Name="TbItemChatLog" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <TabItem.Header>
+                    <TextBlock Text="Chat log">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=TabItem}}" Value="True">
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </TabItem.Header>
+                <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                    <TextBox x:Name="TxtChatLog" IsReadOnly="True">
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="CmdClearChatLog"  Header="Clear chat log" />
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StatusBar Grid.Row="1" x:Name="StsStats" VerticalAlignment="Bottom" FontSize="10">
+            <Label x:Name="LblOnline" Content="Online: [0]" />
+            <Label x:Name="LblGreets" Content="Greets: [0]" />
+            <Label x:Name="LblConvos" Content="Convos: [0]" />
+            <Label x:Name="LblIn" Content="In: [0]" />
+            <Label x:Name="LblOut" Content="Out: [0]" />
+            <Label x:Name="LblLinks" Content="Links: [0]" />
+            <Label x:Name="LblCompleted" Content="Completed: [0]" />
+            <Label x:Name="LblRestricts" Content="Restricts: [0]" />
+        </StatusBar>
+
+    </Grid>
+</Window>
